@@ -11,6 +11,8 @@ import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CharacterComponent } from './character/character.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,12 +23,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LocationsComponent,
     HomeComponent,
     NotFoundComponent,
-    CharacterComponent
+    CharacterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule,
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

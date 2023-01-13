@@ -1,4 +1,4 @@
-export interface Character {
+export interface ICharater {
   id: number;
   name: string;
   status: string;
@@ -13,7 +13,7 @@ export interface Character {
   created: string;
 }
 
-export interface Location {
+export interface ILocation {
   id: number;
   name: string;
   type: string;
@@ -23,7 +23,7 @@ export interface Location {
   created: string;
 }
 
-export interface Episode {
+export interface IEpisode {
   id: number;
   name: string;
   air_date: string;
