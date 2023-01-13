@@ -1,9 +1,25 @@
 <header>
-  <nav>
-    <ul>
-      <li><a [routerLink]="['/characters']">Characters</a></li>
-      <li><a [routerLink]="['/locations']">Locations</a></li>
-      <li><a [routerLink]="['/episodes']">Episodes</a></li>
-    </ul>
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" [routerLink]="['/']">Home</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        aria-controls="navbarContent"
+        [attr.aria-expanded]="!collapsed"
+        aria-label="Toggle navigation"
+        (click)="collapsed = !collapsed"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="navbar-collapse" [class.collapse]="collapsed" id="navbarContent">
+        <ul class="navbar-nav ms-auto">
+          <a ngClass="nav-link" [routerLink]="['/characters']" routerLinkActive="active">Characters</a>
+          <a ngClass="nav-link" [routerLink]="['/locations']" routerLinkActive="active">Locations</a>
+          <a ngClass="nav-link" [routerLink]="['/episodes']" routerLinkActive="active">Episodes</a>
+        </ul>
+      </div>
+    </div>
   </nav>
 </header>
