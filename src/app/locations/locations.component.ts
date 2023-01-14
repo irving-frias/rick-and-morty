@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ILocation } from '../interfaces';
 import { LocationsService } from '../services/locations.service';
 
@@ -12,9 +13,17 @@ export class LocationsComponent implements OnInit {
   allLocations: number = 0;
   pagination: number = 1;
 
-  constructor(private locationService: LocationsService) { }
+  constructor(
+    private locationService: LocationsService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+  ) { }
 
   ngOnInit(): void {
+    this.activatedRoute.queryParams.forEach((params: any) => {
+      this.pagination = Number(params['page']) ?? 1;
+    });
+
     this.fetchLocations();
   }
 
@@ -28,5 +37,14 @@ export class LocationsComponent implements OnInit {
   renderPage(event: number) {
     this.pagination = event;
     this.fetchLocations();
+
+    this.router.navigate(
+      [],
+      {
+        relativeTo: this.activatedRoute,
+        queryParams: { page: event },
+        queryParamsHandling: 'merge'
+      }
+    );
   }
 }

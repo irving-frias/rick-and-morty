@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ICharater } from '../interfaces';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ICharacter } from '../interfaces';
 import { CharactersService } from '../services/characters.service';
 
 @Component({
@@ -8,11 +9,15 @@ import { CharactersService } from '../services/characters.service';
   styleUrls: ['./characters.component.scss']
 })
 export class CharactersComponent implements OnInit {
-  Characters: ICharater[] = [];
+  Characters: ICharacter[] = [];
   allCharacters: number = 0;
   pagination: number = 1;
 
-  constructor(private characterService: CharactersService) { }
+  constructor(
+    private characterService: CharactersService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+  ) { }
 
   ngOnInit(): void {
     this.fetchCharacters();
@@ -28,5 +33,14 @@ export class CharactersComponent implements OnInit {
   renderPage(event: number) {
     this.pagination = event;
     this.fetchCharacters();
+
+    this.router.navigate(
+      [],
+      {
+        relativeTo: this.activatedRoute,
+        queryParams: { page: event },
+        queryParamsHandling: 'merge'
+      }
+    );
   }
 }

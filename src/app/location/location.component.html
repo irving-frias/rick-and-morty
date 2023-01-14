@@ -1,5 +1,31 @@
 <div class="container">
   <h1>Location number #{{ ID }}</h1>
 
-  <a [routerLink]="['/locations']">Return to locations list</a>
+
+  <div *ngIf="Residents.length > 0" class="residents">
+    <h2>Residents</h2>
+
+    <div class="row">
+      <div
+        class="col-md-6 col-lg-4 col-xl-3 resident mt-3"
+        *ngFor="let resident of Residents"
+      >
+        <div class="card">
+          <img class="card-img-top" src="{{ resident.image }}" alt="{{ resident.name }}">
+          <div class="card-body">
+            <h3 class="card-title">{{ resident.name }}</h3>
+            <h4 class="card-subtitle">Status: {{ resident.status }}</h4>
+            <h4 class="card-subtitle">Gender: {{ resident.gender }}</h4>
+            <a [routerLink]="['/resident', resident.id]" class="btn btn-primary mt-2">Read More</a>
+          </div>
+
+          <div class="card-footer text-muted">
+            {{ resident.created | date: 'mediumDate' }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a class="btn btn-primary mt-5 mb-5 btn-large" [routerLink]="['/locations']">Return to locations list</a>
 </div>
