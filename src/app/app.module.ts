@@ -13,6 +13,8 @@ import { CharacterComponent } from './character/character.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { HttpClientModule } from '@angular/common/http';
+import { EpisodeComponent } from './episode/episode.component';
+import { LocationComponent } from './location/location.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     NotFoundComponent,
     CharacterComponent,
+    EpisodeComponent,
+    LocationComponent,
   ],
   imports: [
     BrowserModule,

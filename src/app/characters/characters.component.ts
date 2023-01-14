@@ -21,7 +21,6 @@ export class CharactersComponent implements OnInit {
   fetchCharacters(): void {
     this.characterService.getCharacters(this.pagination).subscribe((res: any) => {
       this.Characters = res.results;
-      console.log(this.Characters);
       this.allCharacters = res.info.count;
     })
   }

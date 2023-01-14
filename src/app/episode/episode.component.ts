@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-character',
-  templateUrl: './character.component.html',
-  styleUrls: ['./character.component.scss']
+  selector: 'app-episode',
+  templateUrl: './episode.component.html',
+  styleUrls: ['./episode.component.scss']
 })
-export class CharacterComponent implements OnInit {
+export class EpisodeComponent implements OnInit {
   ID: string | undefined;
   constructor(private route: ActivatedRoute) { }
 
