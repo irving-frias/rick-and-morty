@@ -4,12 +4,12 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class CharactersService {
-  private url: string = 'https://rickandmortyapi.com/api/character';
+export class LocationsService {
+  private url: string = 'https://rickandmortyapi.com/api/location';
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
 
-  getCharacters(page: number) {
+  getLocations(page: number) {
     return this.httpClient.get(this.url + '?page=' + page);
   }
 }
