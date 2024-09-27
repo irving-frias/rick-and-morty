@@ -103,7 +103,7 @@ export default function Character({ params }: { params: { slug: string } }) {
               {character.origin.name}
             </Link>
           ) : (
-            <span className="text-gray-700 dark:text-gray-400">Unknown</span>
+            <span className="text-gray-700 dark:text-gray-400">{character.origin.name}</span>
           )}
         </p>
       </div>
