@@ -1,9 +1,12 @@
+// Ensure this file is marked as a Client Component
 'use client';
+
 import { useEffect, useState, Suspense } from 'react';
-import { useSearchParams } from 'next/navigation'; // Use the correct import for useSearchParams
+import { useSearchParams } from 'next/navigation'; // Correct import for useSearchParams
 import Link from 'next/link';
 import Image from 'next/image';
 
+// Character interfaces
 interface CharacterOrigin {
   name: string;
   url: string;
@@ -36,7 +39,11 @@ interface PaginationInfo {
   prev: string | null;
 }
 
-const CharacterList = ({ page }: { page: number }) => {
+// Component that fetches character data
+const CharacterList = () => {
+  const searchParams = useSearchParams();
+  const pageParam = searchParams.get('page');
+  const page = pageParam ? parseInt(pageParam, 10) : 1; // Default to page 1
   const [characters, setCharacters] = useState<Character[]>([]);
   const [paginationInfo, setPaginationInfo] = useState<PaginationInfo | null>(null);
 
@@ -83,14 +90,12 @@ const CharacterList = ({ page }: { page: number }) => {
   );
 };
 
+// Main Characters component
 export default function Characters() {
-  const searchParams = useSearchParams();
-  const pageParam = searchParams.get('page');
-  const page = pageParam ? parseInt(pageParam, 10) : 1; // Default to page 1
-
+  // Wrap the character list in a Suspense boundary
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <CharacterList page={page} />
+      <CharacterList />
     </Suspense>
   );
 }
